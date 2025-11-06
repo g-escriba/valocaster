@@ -3,8 +3,17 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+//store-redux imports
+import { useSelector, useDispatch } from 'react-redux'
+import { 
+  increment,
+  decrement,
+  selectCount
+} from './store/reducerstest/counterReducer.js'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const count = useSelector(selectCount)
+  const dispatch = useDispatch(0)
 
   return (
     <>
@@ -18,7 +27,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button onClick={() => dispatch(increment())}>
           count is {count}
         </button>
         <p>
