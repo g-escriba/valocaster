@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -10,10 +10,23 @@ import {
   decrement,
   selectCount
 } from './store/reducerstest/counterReducer.js'
+import {
+  getAgentsData,
+  selectData
+} from './store/reducers/agentsReducer.js'
 
 function App() {
   const count = useSelector(selectCount)
-  const dispatch = useDispatch(0)
+  const dispatch = useDispatch()
+  const agentsData = useSelector(selectData)
+
+  useEffect(() => {
+
+    dispatch(getAgentsData())
+
+  }, [dispatch])
+
+  console.log(agentsData)
 
   return (
     <>
