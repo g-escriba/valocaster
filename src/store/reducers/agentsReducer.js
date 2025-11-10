@@ -43,7 +43,7 @@ export const getAgentsData = () => async (dispatch) => {
 
     dispatch(setLoading())
     const data = await getAgents()
-    dispatch(setAgents(data))
+    dispatch(setAgents(data.data))
 
   }catch(err){
 

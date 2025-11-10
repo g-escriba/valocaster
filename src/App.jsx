@@ -14,20 +14,28 @@ import {
   getAgentsData,
   selectData
 } from './store/reducers/agentsReducer.js'
+import { selectAgentNames } from './store/selectors/agents.js'
+
 
 function App() {
   const count = useSelector(selectCount)
   const dispatch = useDispatch()
   const agentsData = useSelector(selectData)
+  const agentNames = useSelector(selectAgentNames)
+  const [agentNamesList, setAgentNamesList] = useState([])
 
   useEffect(() => {
 
     dispatch(getAgentsData())
 
   }, [dispatch])
+  useEffect(() => {
 
-  console.log(agentsData)
+    if(agentsData.length > 0) setAgentNamesList(agentNames);
 
+  }, [agentsData])
+
+   
   return (
     <>
       <div>
